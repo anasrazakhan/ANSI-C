@@ -9,34 +9,33 @@ int main(){
 	for(int k = 0; k < 26; k++)
 	nalph[k] = 0;
 	while((c = getchar()) != EOF){
-		if( c >= 'A' && c <= 'Z' ){
-			int d = c - 'A';
-			nalph[d] = nalph[d] + 1;
-			lcount++;
-			}
-		else if( c == ' ' || c == '\n' || c == '\t'){
+		if( c == ' ' || c == '\n' || c == '\t'){
 			wcount++;
 			wlength[wcount] = lcount;
 			lcount = 0;
 			}
+		else{
+			lcount++;
+			} 
 	}
-	printf("\nalphabets = ");
-	for (int i = 0; i < 26 ; i++)
-		printf(" %d", nalph[i]);
-	printf("\n %d",wcount);
-	printf("\n f =");
+	printf("\nWord count =");
+	printf(" %d",wcount);
+	printf("\nWords lengths =");
 	for (int i =1; i <= 20 ; i++)
 	printf(" %d",wlength[i]);
-	printf("\n fr =");
+	printf("\nFrequency =");
 	for (int i = 0; i < 20 ; i++){
 	x = wlength[i];
 	frequency[x] = frequency[x] + 1;
 	}
 	for (int i = 1; i <=20; i++)
 	printf(" %d",frequency[i]);
-	printf("\n \n");
+	printf("\n\n**********HISTOGRAM********** \n\n");
 	for(int i = 1; i <= 20; i++){
-		printf("%d ",i);
+		if(i >=1 && i <=9)
+		printf("%d   ",i);
+		else
+		printf("%d  ",i);
 		for(int k = 0; k < frequency[i]; k++)
 		printf("-");
 		printf("\n");
